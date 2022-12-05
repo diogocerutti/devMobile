@@ -1,0 +1,12 @@
+{
+  "breeds": [
+    {
+      "id": 1,
+      "name": "Poodle"
+    },
+    {
+      "id": 2,
+      "name": "Yorkshire"
+    }
+  ]
+}

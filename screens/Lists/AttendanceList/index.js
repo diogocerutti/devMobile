@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Text, View, Image, FlatList } from "react-native";
 import { styles } from "./styles";
 
@@ -19,7 +19,7 @@ const renderItem = ({ item }) => {
     <View style={styles.box}>
       <Image style={styles.image} source={{ uri: item.image }} />
       <View style={styles.boxContent}>
-        <Text style={styles.title}>ATENDIMENTOS</Text>
+        <Text style={styles.title}>ATENDIMENTO</Text>
         <Text style={styles.description}>
           Lorem ipsum dolor sit amet, elit consectetur
         </Text>
@@ -29,7 +29,7 @@ const renderItem = ({ item }) => {
 };
 
 export function AttendanceList() {
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const handleRefresh = () => {
     setRefreshing((prevState) => !prevState);

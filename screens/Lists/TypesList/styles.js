@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   image: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
   },
   box: {
     padding: 20,

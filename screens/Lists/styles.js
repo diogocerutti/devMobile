@@ -13,6 +13,13 @@ export const styles = StyleSheet.create({
     padding: 8,
     justifyContent: "center",
   },
+  touchableClear: {
+    height: 55,
+    margin: 10,
+    backgroundColor: "red",
+    padding: 8,
+    justifyContent: "center",
+  },
   touchableText: {
     fontSize: 18,
     fontWeight: "500",

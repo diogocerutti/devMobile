@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "flex-start",
+    justifyContent: "space-between",
     marginLeft: 10,
   },
   title: {
@@ -47,5 +48,10 @@ export const styles = StyleSheet.create({
   },
   message: {
     backgroundColor: "#228B22",
+  },
+  value: {
+    fontSize: 15,
+    color: "#646464",
+    fontWeight: "bold",
   },
 });

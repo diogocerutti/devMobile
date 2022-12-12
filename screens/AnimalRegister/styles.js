@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  topImage: {
+    height: 100,
+    width: 100,
+    marginTop: 10,
+    marginBottom: 10,
+  },
   input: {
     width: 350,
     height: 55,

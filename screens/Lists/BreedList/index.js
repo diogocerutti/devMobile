@@ -1,53 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, FlatList } from "react-native";
 import { styles } from "./styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-/* const renderItem = ({ item }) => {
+const myKeyExtractor = (item) => {
+  return item;
+};
+
+const renderItem = ({ item }) => {
   return (
     <View style={styles.box}>
-      <Text>{item.name}</Text>
       <View style={styles.boxContent}>
-        <Text style={styles.title}>RAÇAS</Text>
-        <Text style={styles.description}>
-          Lorem ipsum dolor sit amet, elit consectetur
-        </Text>
+        <Text style={styles.title}>Nome da Raça</Text>
+        <Text style={styles.description}>{item}</Text>
       </View>
     </View>
   );
 };
-*/
 
 export function BreedList() {
-  const [data, setData] = useState([]);
+  const [breedList, setBreedList] = useState([]);
 
-  async function getBreeds() {
+  const getBreedList = async () => {
     try {
-      let response = await fetch("http://localhost:3000/breeds");
-      let responseJson = await response.json();
-      setData(responseJson);
-      return responseJson;
-    } catch (error) {
-      alert(error);
+      const data = await AsyncStorage.getItem("breeds");
+
+      const output = JSON.parse(data);
+
+      setBreedList(output);
+    } catch (err) {
+      console.log(err);
     }
-  }
-
-  useEffect(() => {
-    getBreeds();
-  }, []);
-
-  const renderItem = ({ item }) => {
-    return <Text>{item.name}</Text>;
   };
 
+  useEffect(() => {
+    async function tempFunction() {
+      await getBreedList();
+    }
+
+    tempFunction();
+
+    return () => {};
+  }, []);
+
   return (
-    <View>
-      {data && (
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-        />
-      )}
-    </View>
+    <FlatList
+      data={breedList}
+      renderItem={renderItem}
+      keyExtractor={myKeyExtractor}
+    />
   );
 }

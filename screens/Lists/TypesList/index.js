@@ -1,47 +1,65 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Text, View, Image, FlatList } from "react-native";
 import { styles } from "./styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const MarvelList = [
-  { id: 1, image: "https://bootdey.com/img/Content/avatar/avatar6.png" },
-  { id: 2, image: "https://bootdey.com/img/Content/avatar/avatar6.png" },
-  { id: 3, image: "https://bootdey.com/img/Content/avatar/avatar2.png" },
-  { id: 4, image: "https://bootdey.com/img/Content/avatar/avatar3.png" },
-  { id: 5, image: "https://bootdey.com/img/Content/avatar/avatar4.png" },
-];
+function randomImage(
+  items = [
+    "https://cdn-icons-png.flaticon.com/512/862/862032.png",
+    "https://cdn-icons-png.flaticon.com/512/2002/2002492.png",
+    "https://cdn-icons-png.flaticon.com/512/857/857663.png",
+    "https://cdn-icons-png.flaticon.com/512/541/541957.png",
+  ]
+) {
+  return items[Math.floor(Math.random() * items.length)];
+}
 
 const myKeyExtractor = (item) => {
-  return item.id;
+  return item;
 };
 
 const renderItem = ({ item }) => {
   return (
     <View style={styles.box}>
-      <Image style={styles.image} source={{ uri: item.image }} />
+      <Image style={styles.image} source={{ uri: randomImage() }} />
       <View style={styles.boxContent}>
-        <Text style={styles.title}>TIPOS</Text>
-        <Text style={styles.description}>
-          Lorem ipsum dolor sit amet, elit consectetur
-        </Text>
+        <Text style={styles.title}>Tipo de Atendimento</Text>
+        <Text style={styles.description}>{item}</Text>
       </View>
     </View>
   );
 };
 
 export function TypesList() {
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [typesList, setTypesList] = useState([]);
 
-  const handleRefresh = () => {
-    setRefreshing((prevState) => !prevState);
+  const getTypesList = async () => {
+    try {
+      const data = await AsyncStorage.getItem("types");
+
+      const output = JSON.parse(data);
+
+      setTypesList(output);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    async function tempFunction() {
+      await getTypesList();
+    }
+
+    tempFunction();
+
+    return () => {};
+  }, []);
 
   return (
     <FlatList
-      data={MarvelList}
+      data={typesList}
       renderItem={renderItem}
       keyExtractor={myKeyExtractor}
-      refreshing={refreshing}
-      onRefresh={handleRefresh}
     />
   );
 }

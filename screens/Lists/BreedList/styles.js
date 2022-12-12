@@ -1,10 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  image: {
-    width: 100,
-    height: 100,
-  },
   box: {
     padding: 20,
     marginTop: 5,
@@ -26,26 +22,21 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     color: "#646464",
   },
-  buttons: {
-    flexDirection: "row",
-  },
-  button: {
-    height: 35,
-    flexDirection: "row",
+  buttonView: {
+    flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-    width: 50,
-    marginRight: 5,
-    marginTop: 5,
   },
-  view: {
-    backgroundColor: "#eee",
+  clearButton: {
+    width: "100%",
+    backgroundColor: "#0047AB",
+    borderColor: "#00000",
+    borderRadius: 15,
+    height: 50,
+    justifyContent: "center",
   },
-  profile: {
-    backgroundColor: "#1E90FF",
-  },
-  message: {
-    backgroundColor: "#228B22",
+  buttonText: {
+    alignSelf: "center",
+    color: "#FFF",
+    fontSize: 30,
   },
 });

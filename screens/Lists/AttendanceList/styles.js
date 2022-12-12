@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "flex-start",
+    justifyContent: "space-between",
     marginLeft: 10,
   },
   title: {

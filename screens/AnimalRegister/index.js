@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { View, Text, TouchableHighlight, TextInput, Image } from "react-native";
 import { styles } from "./styles";
 import * as ImagePicker from "expo-image-picker";
+import pet from "../../images/pet.png";
 
 export function AnimalRegister({ navigation }) {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -17,13 +17,14 @@ export function AnimalRegister({ navigation }) {
 
     console.log(result);
 
-    if (!result.canceled) {
+    if (!result.cancelled) {
       setImage(result.assets[0].uri);
     }
   };
 
   return (
     <View style={styles.container}>
+      <Image source={pet} style={styles.topImage} />
       <TextInput
         style={styles.input}
         placeholder="Apelido"

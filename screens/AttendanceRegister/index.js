@@ -1,9 +1,11 @@
 import { View, Text, TouchableHighlight, TextInput, Image } from "react-native";
 import { styles } from "./styles";
+import calendar from "../../images/calendar.png";
 
 export function AttendanceRegister({ navigation }) {
   return (
     <View style={styles.container}>
+      <Image source={calendar} style={styles.topImage} />
       <TextInput
         style={styles.input}
         placeholder="Usuário"

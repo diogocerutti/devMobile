@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, View, Image, FlatList } from "react-native";
 import { styles } from "./styles";
 
-const MarvelList = [
+const List = [
   { id: 1, image: "https://bootdey.com/img/Content/avatar/avatar6.png" },
   { id: 2, image: "https://bootdey.com/img/Content/avatar/avatar6.png" },
   { id: 3, image: "https://bootdey.com/img/Content/avatar/avatar2.png" },
@@ -37,7 +37,7 @@ export function AttendanceList() {
 
   return (
     <FlatList
-      data={MarvelList}
+      data={List}
       renderItem={renderItem}
       keyExtractor={myKeyExtractor}
       refreshing={refreshing}
